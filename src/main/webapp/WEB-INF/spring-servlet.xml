@@ -24,6 +24,12 @@
 	<context:component-scan base-package="com.ams.service"/>
 	
 	<!--  <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />  -->
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<bean class="com.ams.common.HttpInterceptor"></bean>
+	</mvc:interceptors>
+	<!-- 注入ApplicationContext,使得在任何情况下都能使用bean -->
+	<bean class="com.ams.common.ApplicationContextHelper"/>
 	<!-- 全局捕获异常的异常bean -->
 	<bean class="com.ams.common.SpringExceptionResolver"></bean>
 	<!-- 视图渲染，返回指定格式 -->
