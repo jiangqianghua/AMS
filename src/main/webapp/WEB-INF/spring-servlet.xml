@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 启动注解 -->
+	<context:annotation-config/>
+	
+	<!-- 启动注解启动的spring mvc 功能 -->
+	<mvc:annotation-driven>
+		<!-- 设置请求编码 -->
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes" value="text/plain;charset=UTF-8" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<!-- 启动扫描哪些包 -->
+	<context:component-scan base-package="com.ams.controller"/>
+	<context:component-scan base-package="com.ams.service"/>
+	
+	<!--  <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />  -->
+	<!-- 全局捕获异常的异常bean -->
+	<bean class="com.ams.common.SpringExceptionResolver"></bean>
+	<!-- 视图渲染，返回指定格式 -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+	<!-- json返回，用MappingJackson2JsonView处理  -->
+	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+	<!-- jsp返回，用InternalResourceViewResolver -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 模版渲染的时候，指定以哪个路径下的页面返回 -->
+		<property name="prefix" value="/WEB-INF/views" />
+		<!--  返回jsp页面处理 -->
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>
