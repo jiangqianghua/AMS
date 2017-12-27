@@ -28,6 +28,12 @@ public class JsonData {
 		return jsonData ;
 	}
 	
+	public static JsonData success(Object obj){
+		JsonData jsonData = new JsonData(true);
+		jsonData.data = obj ; 
+		return jsonData ;
+	}
+	
 	public static JsonData success(){
 		JsonData jsonData = new JsonData(true);
 		return jsonData ;

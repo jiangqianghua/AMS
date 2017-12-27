@@ -33,7 +33,7 @@
 			<property name="minIdle" value="3"/>
 			<property name="maxActive" value="20"/>
 			<property name="maxWait" value="60000"/>
-			<property name="filters" value="stat,wall"/>
+			<property name="filters" value="stat"/>
 		</bean>       
 		<!-- 指定sql的位置，以及是如何连接数据库的 -->
 		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -63,4 +63,5 @@
 		<bean id="wall-filter" class="com.alibaba.druid.wall.WallFilter">
 			<property name="dbType" value="mysql"></property>
 		</bean>
+		
 </beans>

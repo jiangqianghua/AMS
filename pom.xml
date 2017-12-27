@@ -160,6 +160,18 @@
     	<artifactId>jackson-mapper-asl</artifactId>
     	<version>1.9.13</version>
     </dependency>
+    
+    <dependency>
+    	<groupId>org.apache.commons</groupId>
+    	<artifactId>commons-lang3</artifactId>
+    	<version>3.5</version>
+    </dependency>
+    
+    <dependency>
+	    <groupId>javax.annotation</groupId>
+	    <artifactId>jsr250-api</artifactId>
+	    <version>1.0</version>
+	</dependency>
   </dependencies>
   <build>
     <finalName>AuthorityManagementSystem</finalName>
